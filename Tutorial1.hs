@@ -1,31 +1,31 @@
 module Tutorial1 where
-
 import PicturesSVG -- needed for the optional chess part
 import Test.QuickCheck
 
 -- Exercise 2:
 
 double :: Int -> Int
-  double x = x + x
+double x = x + x
 
 square :: Int -> Int
-square x = undefined
+square x = x * x
 
 -- Exercise 3:
 
 isTriple :: Int -> Int -> Int -> Bool
-isTriple a b c = undefined
+isTriple a b c = (a*a) + (b*b) == (c*c)
 
 -- Exercise 4:
 
 leg1 :: Int -> Int -> Int
-leg1 x y = undefined
+leg1 x y = (x * x) - (y * y)
 
 leg2 :: Int -> Int -> Int
-leg2 x y = undefined
+leg2 x y = 2 * x * y
 
 hyp :: Int -> Int -> Int
-hyp x y = undefined
+hyp x y = (x * x) + (y * y)
+
 
 -- Exercise 5:
 
@@ -35,10 +35,10 @@ prop_triple x y = isTriple (leg1 x y) (leg2 x y) (hyp x y)
 -- Exercise 7:
 
 pic1 :: Picture
-pic1 = undefined
+pic1 = above (twoBeside knight) (invert(twoBeside knight))
 
 pic2 :: Picture
-pic2 = undefined
+pic2 = above (twoBeside knight) (flipV(invert(twoBeside knight)))
 
 -- Functions --
 
@@ -48,31 +48,31 @@ twoBeside x = beside x (invert x)
 -- Exercise 8:
 
 twoAbove :: Picture -> Picture
-twoAbove x = undefined
+twoAbove x = above x (invert x)
 
-fourPictures :: Picture -> Picture
-fourPictures x = undefined
-
+fourPictures :: Picture -> Picture 
+fourPictures x = (twoBeside (twoAbove x))
 -- Exercise 9:
 -- a)
 
 emptyRow :: Picture
-emptyRow = undefined
+emptyRow = repeatH 4 (beside whiteSquare(invert whiteSquare))
 
 -- b)
 
 otherEmptyRow :: Picture
-otherEmptyRow = undefined
+otherEmptyRow = repeatH 4 (beside blackSquare (invert blackSquare))
 
 -- c)
 
 middleBoard :: Picture
-middleBoard = undefined
+middleBoard = repeatV 2 (above emptyRow(otherEmptyRow))
 
 -- d)
 
 whiteRow :: Picture
-whiteRow = undefined
+whiteRow =  undefined
+
 
 blackRow :: Picture
 blackRow = undefined
